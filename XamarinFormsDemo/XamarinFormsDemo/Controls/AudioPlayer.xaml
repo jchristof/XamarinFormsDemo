@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinFormsDemo.Controls.AudioPlayer">
+  <ContentView.Content>
+      <StackLayout>             
+          <Label Text="{Binding Message}"/>
+          <Button Text="{Binding PlayState}" Clicked="Button_OnClicked"></Button>
+          <ProgressBar Progress="{Binding Progress}"/>
+
+            <ActivityIndicator></ActivityIndicator>
+      </StackLayout>
+    </ContentView.Content>
+</ContentView>
