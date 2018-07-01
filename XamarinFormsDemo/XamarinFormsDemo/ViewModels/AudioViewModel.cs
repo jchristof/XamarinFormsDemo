@@ -45,6 +45,19 @@ namespace XamarinFormsDemo.ViewModels
             }
         }
 
+        private bool isLoading;
+
+        public bool IsLoading {
+            get => isLoading;
+            set {
+                if (isLoading == value)
+                    return;
+
+                isLoading = value;
+                RaisePropertyChanged();
+            }
+        }
+
         //property changed events
         public event PropertyChangedEventHandler PropertyChanged;
 

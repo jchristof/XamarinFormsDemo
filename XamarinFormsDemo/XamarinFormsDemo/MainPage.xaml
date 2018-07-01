@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:XamarinFormsDemo"
              xmlns:controls="clr-namespace:XamarinFormsDemo.Controls;assembly=XamarinFormsDemo"
-             x:Class="XamarinFormsDemo.MainPage">
+             x:Class="XamarinFormsDemo.MainPage"
+             BackgroundColor="Black">
 
     <StackLayout>
         <controls:AudioPlayer/>

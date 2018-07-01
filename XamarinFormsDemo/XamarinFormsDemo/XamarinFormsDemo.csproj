@@ -4,12 +4,20 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <LangVersion>7.2</LangVersion>
+  </PropertyGroup>
+
   <ItemGroup>
+    <None Remove="Resources\Images\pause.png" />
+    <None Remove="Resources\Images\play.png" />
     <None Remove="Resources\YMXB.mp3" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\Audio\YMXB.mp3" />
+    <EmbeddedResource Include="Resources\Images\pause.png" />
+    <EmbeddedResource Include="Resources\Images\play.png" />
   </ItemGroup>
 
   <ItemGroup>

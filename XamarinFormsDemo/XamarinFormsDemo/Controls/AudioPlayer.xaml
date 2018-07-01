@@ -2,13 +2,30 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamarinFormsDemo.Controls.AudioPlayer">
-  <ContentView.Content>
-      <StackLayout>             
-          <Label Text="{Binding Message}"/>
-          <Button Text="{Binding PlayState}" Clicked="Button_OnClicked"></Button>
-          <ProgressBar Progress="{Binding Progress}"/>
+    <ContentView.Resources>
 
-            <ActivityIndicator></ActivityIndicator>
+    </ContentView.Resources>
+    <ContentView.Content>
+
+        <StackLayout>
+            <Label Text="{Binding Message}" HorizontalTextAlignment = "Center"/>
+
+            <Button 
+                x:Name="Transport"
+                Text="{Binding PlayState}" 
+                Clicked="Button_OnClicked" 
+                WidthRequest="100"
+                HeightRequest="100" 
+                CornerRadius="50"
+                HorizontalOptions="Center" 
+                BackgroundColor="Transparent"
+                BorderColor="White"
+                BorderWidth="2"
+                Image="{Binding ButtonImage}"
+                />
+                <ProgressBar Progress="{Binding Progress}"/>
+
+            <ActivityIndicator Color="White" IsRunning="{Binding IsLoading}"/>
       </StackLayout>
     </ContentView.Content>
 </ContentView>

@@ -16,36 +16,42 @@ namespace XamarinFormsDemo.Controls
 	    public AudioPlayer() {
 	        BindingContext = new AudioViewModel();
 	        InitializeComponent();
-	        player = CrossSimpleAudioPlayer.Current;
 
-	        AudioViewModel.Message = "Audio player ready";
+	        AudioViewModel.Message = "Audio Player ready";
 
-	        player.PlaybackEnded += (sender, e) => {
+	        Player.PlaybackEnded += (sender, e) => {
 	            AudioViewModel.PlayState = "Play";
 	        };
 
+	        Transport.Image = "XamarinFormsDemo.Resources.Images.play.png";
+
             //fake an audio load
 	        Task.Run(async () => {
-	            await Task.Delay(TimeSpan.FromSeconds(2));
+	            AudioViewModel.IsLoading = true;
+                await Task.Delay(TimeSpan.FromSeconds(5));
 
-	            var audioFileToLoad = "YMXB.mp3";
-                hasLoadedAudio = LoadAudio(audioFileToLoad);
-	            AudioViewModel.Message = $"{audioFileToLoad} now loaded";
+	            audioFileToPlay = "YMXB.mp3";
+                hasLoadedAudio = LoadAudio(audioFileToPlay);
+	            AudioViewModel.Message = $"{audioFileToPlay} now loaded";
+	            AudioViewModel.IsLoading = false;
 	        });
 
-            Device.StartTimer(new TimeSpan(0, 0, 0, 0, 500), () => {
-                if (player == null)
+            Device.StartTimer(TimeSpan.FromSeconds(.5), () => {
+                if (Player == null)
                     return false;
 
-                AudioViewModel.Progress = Convert.ToDouble(player.CurrentPosition) / player.Duration;
+                AudioViewModel.Progress = Convert.ToDouble(Player.CurrentPosition) / Player.Duration;
                 return true;
             });
         }
 
         private AudioViewModel AudioViewModel => BindingContext as AudioViewModel;
 
-        private readonly ISimpleAudioPlayer player;
-	    private bool hasLoadedAudio;
+	    private ISimpleAudioPlayer Player => CrossSimpleAudioPlayer.Current;
+
+	    private String audioFileToPlay = string.Empty;
+
+        private bool hasLoadedAudio;
 
 	     private bool LoadAudio(string audioFilePath) {
 
@@ -55,19 +61,19 @@ namespace XamarinFormsDemo.Controls
             if (audioStream == null)
 	            return false;
 
-	        player.Load(audioStream);
+	        Player.Load(audioStream);
 	        return true;
 	    }
 
         private void Button_OnClicked(object sender, EventArgs e) {
        
-            if (player.IsPlaying) {
+            if (Player.IsPlaying) {
                 AudioViewModel.PlayState = "Play";
-                player.Pause();
+                Player.Pause();
             }
             else {
-                player.Play();
-
+                Player.Play();
+                AudioViewModel.Message = $"Now playing: {audioFileToPlay}";
                 AudioViewModel.PlayState = "Pause";
             }
         }
