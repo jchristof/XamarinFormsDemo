@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 using Plugin.SimpleAudioPlayer;
@@ -20,10 +19,8 @@ namespace XamarinFormsDemo.Controls
 	        AudioViewModel.Message = "Audio Player ready";
 
 	        Player.PlaybackEnded += (sender, e) => {
-	            AudioViewModel.PlayState = "Play";
+	            AudioViewModel.PlayState = "Pause";
 	        };
-
-	        Transport.Image = "XamarinFormsDemo.Resources.Images.play.png";
 
             //fake an audio load
 	        Task.Run(async () => {
@@ -68,13 +65,13 @@ namespace XamarinFormsDemo.Controls
         private void Button_OnClicked(object sender, EventArgs e) {
        
             if (Player.IsPlaying) {
-                AudioViewModel.PlayState = "Play";
+                AudioViewModel.PlayState = "Pause";
                 Player.Pause();
             }
             else {
                 Player.Play();
                 AudioViewModel.Message = $"Now playing: {audioFileToPlay}";
-                AudioViewModel.PlayState = "Pause";
+                AudioViewModel.PlayState = "Play";
             }
         }
     }

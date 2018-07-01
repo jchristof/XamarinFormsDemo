@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\high.png" />
     <None Remove="Resources\Images\pause.png" />
     <None Remove="Resources\Images\play.png" />
     <None Remove="Resources\YMXB.mp3" />
@@ -16,6 +17,7 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\Audio\YMXB.mp3" />
+    <EmbeddedResource Include="Resources\Images\high.png" />
     <EmbeddedResource Include="Resources\Images\pause.png" />
     <EmbeddedResource Include="Resources\Images\play.png" />
   </ItemGroup>

@@ -1,11 +1,26 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
+using System.IO;
 using System.Runtime.CompilerServices;
 
 namespace XamarinFormsDemo.ViewModels
 {
     public class AudioViewModel : INotifyPropertyChanged {
-        private string playstate = "Play";
 
+        public AudioViewModel() {
+            var localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string iconDirectory = Path.Combine(localAppData, "icons");
+            playIcon = Path.Combine(iconDirectory, "play.png");
+            pauseIcon = Path.Combine(iconDirectory, "pause.png");
+            songIcon = Path.Combine(iconDirectory, "high.png");
+        }
+
+        private string playIcon;
+        private string pauseIcon;
+        private string songIcon;
+
+        private string playstate = "Pause";
+        
         // The button state text
         public string PlayState {
             get => playstate;
@@ -14,6 +29,7 @@ namespace XamarinFormsDemo.ViewModels
                     return;
                 playstate = value;
                 RaisePropertyChanged();
+                RaisePropertyChanged("TransportImage");
             }
         }
 
@@ -57,6 +73,9 @@ namespace XamarinFormsDemo.ViewModels
                 RaisePropertyChanged();
             }
         }
+
+        public string TransportImage => playstate == "Play" ? pauseIcon : playIcon;
+        public string SongImage => songIcon;
 
         //property changed events
         public event PropertyChangedEventHandler PropertyChanged;
