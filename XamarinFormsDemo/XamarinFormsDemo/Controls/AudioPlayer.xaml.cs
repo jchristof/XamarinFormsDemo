@@ -31,13 +31,14 @@ namespace XamarinFormsDemo.Controls
                 hasLoadedAudio = LoadAudio(audioFileToPlay);
 	            AudioViewModel.Message = $"{audioFileToPlay} now loaded";
 	            AudioViewModel.IsLoading = false;
+	            
 	        });
 
             Device.StartTimer(TimeSpan.FromSeconds(.5), () => {
                 if (Player == null)
                     return false;
 
-                AudioViewModel.Progress = Convert.ToDouble(Player.CurrentPosition) / Player.Duration;
+                AudioViewModel.TrackElapsed = Player.CurrentPosition;
                 return true;
             });
         }
@@ -59,7 +60,8 @@ namespace XamarinFormsDemo.Controls
 	            return false;
 
 	        Player.Load(audioStream);
-	        return true;
+	        AudioViewModel.TrackLength = Player.Duration;
+            return true;
 	    }
 
         private void Button_OnClicked(object sender, EventArgs e) {

@@ -48,15 +48,30 @@ namespace XamarinFormsDemo.ViewModels
             }
         }
 
-        private double progress;
+        public double TrackProgress => trackElapsed / trackLength;
 
-        public double Progress {
-            get => progress;
+        private double trackElapsed;
+
+        public double TrackElapsed {
+            get => trackElapsed;
             set {
-                if (progress.Equals(value))
+                if (trackElapsed.Equals(value))
                     return;
 
-                progress = value;
+                trackElapsed = value;
+                RaisePropertyChanged();
+                RaisePropertyChanged("TrackProgress");
+            }
+        }
+
+        private double trackLength;
+
+        public double TrackLength {
+            get => trackLength;
+            set {
+                if (trackLength.Equals(value))
+                    return;
+                trackLength = value;
                 RaisePropertyChanged();
             }
         }

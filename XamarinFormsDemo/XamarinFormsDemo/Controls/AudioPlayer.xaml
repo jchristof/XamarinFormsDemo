@@ -1,20 +1,41 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="XamarinFormsDemo.Controls.AudioPlayer">
+             xmlns:converters="clr-namespace:XamarinFormsDemo.Converters;assembly=XamarinFormsDemo"
+             x:Class="XamarinFormsDemo.Controls.AudioPlayer"
+             >
     <ContentView.Resources>
-
+        <converters:DoubleToTimeString x:Key="DoubleToTimeString"/> 
     </ContentView.Resources>
     <ContentView.Content>
 
-        <StackLayout>
-            <Label Text="{Binding Message}" HorizontalTextAlignment = "Center" TextColor="White"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Text="{Binding Message}" HorizontalTextAlignment = "Center" VerticalTextAlignment="Center"  TextColor="White"/>
+            <Image Source="{Binding SongImage}" Margin="8" Aspect="AspectFit" Grid.Row="1" HeightRequest="350" />
+         
+            <ActivityIndicator Color="White" IsRunning="{Binding IsLoading}" Grid.Row="1" HorizontalOptions="Center"/>
 
-            <Image Source="{Binding SongImage}" Margin="8"/>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label TextColor="White" Text="{Binding TrackElapsed, Converter={StaticResource DoubleToTimeString}}" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+                <ProgressBar Progress="1.0" ProgressColor="LightGray" Grid.Column="1" />
+                <ProgressBar Progress="{Binding TrackProgress}" ProgressColor="White" Grid.Column="1" />
+                <Label TextColor="White" Text="{Binding TrackLength, Converter={StaticResource DoubleToTimeString}}" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+            </Grid>
 
-            <Grid>
-                <StackLayout Margin="16" HorizontalOptions="Center" VerticalOptions="Center">
-                    <Image Source="{Binding TransportImage}" WidthRequest="25" HeightRequest="25"/>
+            <Grid Grid.Row="3" Margin="8">
+                <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                    <Image Margin="32" Source="{Binding TransportImage}" WidthRequest="25" HeightRequest="25"/>
                 </StackLayout>
 
                 <Button 
@@ -26,12 +47,12 @@
                     HorizontalOptions="Center" 
                     BackgroundColor="Transparent"
                     BorderColor="White"
-                    BorderWidth="2"
+                    BorderWidth="1"
                 />
             </Grid>
-            <ProgressBar Progress="{Binding Progress}" ProgressColor="White"/>
+            
 
-            <ActivityIndicator Color="White" IsRunning="{Binding IsLoading}"/>
-      </StackLayout>
+           
+      </Grid>
     </ContentView.Content>
 </ContentView>
