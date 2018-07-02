@@ -16,8 +16,6 @@ namespace XamarinFormsDemo.Controls
 	        BindingContext = new AudioViewModel();
 	        InitializeComponent();
 
-	        AudioViewModel.Message = "Audio Player ready";
-
 	        Player.PlaybackEnded += (sender, e) => {
 	            AudioViewModel.PlayState = "Pause";
 	        };
@@ -29,7 +27,10 @@ namespace XamarinFormsDemo.Controls
 
 	            audioFileToPlay = "YMXB.mp3";
                 hasLoadedAudio = LoadAudio(audioFileToPlay);
-	            AudioViewModel.Message = $"{audioFileToPlay} now loaded";
+
+	            AudioViewModel.Album = "The Obvious Exit";
+	            AudioViewModel.ArtistName = "Flippy";
+	            AudioViewModel.SongTitle = "y=mx+b";
 	            AudioViewModel.IsLoading = false;
 	            
 	        });
@@ -72,7 +73,6 @@ namespace XamarinFormsDemo.Controls
             }
             else {
                 Player.Play();
-                AudioViewModel.Message = $"Now playing: {audioFileToPlay}";
                 AudioViewModel.PlayState = "Play";
             }
         }

@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
+using Android.Net.Wifi.Aware;
 
 namespace XamarinFormsDemo.ViewModels
 {
@@ -12,12 +13,12 @@ namespace XamarinFormsDemo.ViewModels
             string iconDirectory = Path.Combine(localAppData, "icons");
             playIcon = Path.Combine(iconDirectory, "play.png");
             pauseIcon = Path.Combine(iconDirectory, "pause.png");
-            songIcon = Path.Combine(iconDirectory, "high.png");
+            songArt = Path.Combine(iconDirectory, "high.png");
         }
 
         private string playIcon;
         private string pauseIcon;
-        private string songIcon;
+        private string songArt;
 
         private string playstate = "Pause";
         
@@ -30,21 +31,6 @@ namespace XamarinFormsDemo.ViewModels
                 playstate = value;
                 RaisePropertyChanged();
                 RaisePropertyChanged("TransportImage");
-            }
-        }
-
-        private string message = string.Empty;
-
-        // playback messages
-        public string Message {
-            get => message;
-
-            set {
-                if (message == value)
-                    return;
-
-                message = value;
-                RaisePropertyChanged();
             }
         }
 
@@ -90,8 +76,46 @@ namespace XamarinFormsDemo.ViewModels
         }
 
         public string TransportImage => playstate == "Play" ? pauseIcon : playIcon;
-        public string SongImage => songIcon;
+        public string SongArt => songArt;
 
+        private string artistName = string.Empty;
+
+        public string ArtistName {
+            get => artistName;
+            set {
+                if (artistName == value)
+                    return;
+
+                artistName = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private string album = string.Empty;
+
+        public string Album {
+            get => album;
+            set {
+                if (album == value)
+                    return;
+
+                album = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private string songTitle = string.Empty;
+
+        public string SongTitle {
+            get => songTitle;
+            set {
+                if (songTitle == value)
+                    return;
+
+                songTitle = value;
+                RaisePropertyChanged();
+            }
+        }
         //property changed events
         public event PropertyChangedEventHandler PropertyChanged;
 

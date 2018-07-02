@@ -15,13 +15,23 @@
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
-            <Label Text="{Binding Message}" HorizontalTextAlignment = "Center" VerticalTextAlignment="Center"  TextColor="White"/>
-            <Image Source="{Binding SongImage}" Margin="8" Aspect="AspectFit" Grid.Row="1" HeightRequest="350" />
+            
+            <StackLayout>
+                <Label Text="PLAYING FROM ALBUM" HorizontalTextAlignment = "Center" TextColor="White"/>
+                <Label Text="{Binding Album}" HorizontalTextAlignment = "Center" TextColor="White"/>
+            </StackLayout>
+            <Image Source="{Binding SongArt}" Margin="24" Aspect="AspectFit" Grid.Row="1" HeightRequest="350" />
          
             <ActivityIndicator Color="White" IsRunning="{Binding IsLoading}" Grid.Row="1" HorizontalOptions="Center"/>
 
-            <Grid Grid.Row="2">
+            <StackLayout Grid.Row="2">
+                <Label Text="{Binding SongTitle}" HorizontalTextAlignment = "Center" VerticalTextAlignment="Center"  TextColor="White"/>
+                <Label Text="{Binding ArtistName}" HorizontalTextAlignment = "Center" VerticalTextAlignment="Center"  TextColor="White"/>
+            </StackLayout>
+            
+            <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
@@ -33,13 +43,12 @@
                 <Label TextColor="White" Text="{Binding TrackLength, Converter={StaticResource DoubleToTimeString}}" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center"></Label>
             </Grid>
 
-            <Grid Grid.Row="3" Margin="8">
+            <Grid Grid.Row="4" Margin="8">
                 <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
                     <Image Margin="32" Source="{Binding TransportImage}" WidthRequest="25" HeightRequest="25"/>
                 </StackLayout>
 
-                <Button 
-                    x:Name="Transport"           
+                <Button         
                     Clicked="Button_OnClicked" 
                     WidthRequest="100"
                     HeightRequest="100" 
@@ -47,12 +56,10 @@
                     HorizontalOptions="Center" 
                     BackgroundColor="Transparent"
                     BorderColor="White"
-                    BorderWidth="1"
+                    BorderWidth="2"
                 />
             </Grid>
             
-
-           
       </Grid>
     </ContentView.Content>
 </ContentView>
