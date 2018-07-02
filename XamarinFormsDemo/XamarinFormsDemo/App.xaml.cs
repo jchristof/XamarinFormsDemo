@@ -20,7 +20,13 @@ namespace XamarinFormsDemo
 
 		    CopyResourceToFile("XamarinFormsDemo.Resources.Images.play-icon.png", Path.Combine(iconDirectory, "play-icon.png"));
 		    CopyResourceToFile("XamarinFormsDemo.Resources.Images.pause-icon.png", Path.Combine(iconDirectory, "pause-icon.png"));
-		    CopyResourceToFile("XamarinFormsDemo.Resources.Images.high.png", Path.Combine(iconDirectory, "high.png"));
+
+		    CopyResourceToFile("XamarinFormsDemo.Resources.Images.shuffle-icon.png", Path.Combine(iconDirectory, "shuffle-icon.png"));
+		    CopyResourceToFile("XamarinFormsDemo.Resources.Images.replay-icon.png", Path.Combine(iconDirectory, "replay-icon.png"));
+		    CopyResourceToFile("XamarinFormsDemo.Resources.Images.first-track-icon.png", Path.Combine(iconDirectory, "first-track-icon.png"));
+		    CopyResourceToFile("XamarinFormsDemo.Resources.Images.last-track-icon.png", Path.Combine(iconDirectory, "last-track-icon.png"));
+
+            CopyResourceToFile("XamarinFormsDemo.Resources.Images.high.png", Path.Combine(iconDirectory, "high.png"));
 		    
             MainPage = new MainPage();
 		}

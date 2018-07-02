@@ -7,19 +7,6 @@ using Android.Net.Wifi.Aware;
 namespace XamarinFormsDemo.ViewModels
 {
     public class AudioViewModel : INotifyPropertyChanged {
-
-        public AudioViewModel() {
-            var localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            string iconDirectory = Path.Combine(localAppData, "icons");
-            playIcon = Path.Combine(iconDirectory, "play-icon.png");
-            pauseIcon = Path.Combine(iconDirectory, "pause-icon.png");
-            songArt = Path.Combine(iconDirectory, "high.png");
-        }
-
-        private string playIcon;
-        private string pauseIcon;
-        private string songArt;
-
         private string playstate = "Pause";
         
         public string PlayState {
@@ -74,8 +61,16 @@ namespace XamarinFormsDemo.ViewModels
             }
         }
 
-        public string TransportImage => playstate == "Play" ? pauseIcon : playIcon;
-        public string SongArt => songArt;
+        public string TransportImage => playstate == "Play" ? 
+            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "icons", "pause-icon.png")
+            : Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "icons", "play-icon.png");
+
+        public string SongArt => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "icons", "high.png");
+
+        public string TransportShuffle => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "icons", "shuffle-icon.png");
+        public string TransportReplay => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "icons", "replay-icon.png");
+        public string TransportFirstTrack => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "icons", "first-track-icon.png");
+        public string TransportLastTrack => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "icons", "last-track-icon.png");
 
         private string artistName = string.Empty;
 

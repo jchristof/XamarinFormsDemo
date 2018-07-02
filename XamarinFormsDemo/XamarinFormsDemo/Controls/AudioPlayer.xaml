@@ -11,18 +11,18 @@
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             
-            <StackLayout>
+            <StackLayout Margin="4">
                 <Label Text="PLAYING FROM ALBUM" HorizontalTextAlignment = "Center" TextColor="White"/>
                 <Label Text="{Binding Album}" HorizontalTextAlignment = "Center" TextColor="White"/>
             </StackLayout>
-            <Image Source="{Binding SongArt}" Margin="24" Aspect="AspectFit" Grid.Row="1" HeightRequest="350" />
+            <Image Source="{Binding SongArt}" Margin="16" Aspect="AspectFit" Grid.Row="1" HeightRequest="350" />
          
             <ActivityIndicator Color="White" IsRunning="{Binding IsLoading}" Grid.Row="1" HorizontalOptions="Center"/>
 
@@ -33,9 +33,9 @@
             
             <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="50"></ColumnDefinition>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="50"/>
                 </Grid.ColumnDefinitions>
                 <Label TextColor="White" Text="{Binding TrackElapsed, Converter={StaticResource DoubleToTimeString}}" VerticalOptions="Center" HorizontalOptions="Center"></Label>
                 <ProgressBar Progress="1.0" ProgressColor="LightGray" Grid.Column="1" />
@@ -44,18 +44,45 @@
             </Grid>
 
             <Grid Grid.Row="4" Margin="8">
-                <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                    <Image Source="{Binding TransportImage}" WidthRequest="100" HeightRequest="100"/>
-                </StackLayout>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".5*"/>
+                        <ColumnDefinition Width=".5*"/>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width=".5*"/>
+                        <ColumnDefinition Width=".5*"/>
+                    </Grid.ColumnDefinitions>
 
-                <Button         
-                    Clicked="Button_OnClicked" 
-                    WidthRequest="100"
-                    HeightRequest="100" 
-                    CornerRadius="50"
-                    HorizontalOptions="Center" 
-                    BackgroundColor="Transparent"
-                />
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0">
+                        <Image Source="{Binding TransportShuffle}" WidthRequest="50" HeightRequest="50"/>
+                    </StackLayout>
+
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1">
+                        <Image Source="{Binding TransportFirstTrack}" WidthRequest="100" HeightRequest="100"/>
+                    </StackLayout>
+
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2">
+                        <Image Source="{Binding TransportImage}" WidthRequest="150" HeightRequest="150"/>
+                    </StackLayout>
+
+                    <Button         
+                        Clicked="Button_OnClicked" 
+                        WidthRequest="100"
+                        HeightRequest="100" 
+                        CornerRadius="50"
+                        HorizontalOptions="Center" 
+                        BackgroundColor="Transparent"
+                        Grid.Column="2"
+                    />
+
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="3">
+                        <Image Source="{Binding TransportLastTrack}" WidthRequest="100" HeightRequest="100"/>
+                    </StackLayout>
+
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="4">
+                        <Image Source="{Binding TransportReplay}" WidthRequest="100" HeightRequest="100"/>
+                    </StackLayout>
+                </Grid>
             </Grid>
             
       </Grid>
