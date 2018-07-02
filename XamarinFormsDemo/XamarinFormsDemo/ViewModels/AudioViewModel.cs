@@ -22,7 +22,6 @@ namespace XamarinFormsDemo.ViewModels
 
         private string playstate = "Pause";
         
-        // The button state text
         public string PlayState {
             get => playstate;
             set {
