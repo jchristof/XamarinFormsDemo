@@ -9,17 +9,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\first-track-icon.png" />
     <None Remove="Resources\Images\high.png" />
+    <None Remove="Resources\Images\last-track-icon.png" />
+    <None Remove="Resources\Images\pause-icon.png" />
     <None Remove="Resources\Images\pause.png" />
+    <None Remove="Resources\Images\play-icon.png" />
     <None Remove="Resources\Images\play.png" />
+    <None Remove="Resources\Images\replay-icon.png" />
+    <None Remove="Resources\Images\shuffle-icon.png" />
     <None Remove="Resources\YMXB.mp3" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\Audio\YMXB.mp3" />
+    <EmbeddedResource Include="Resources\Images\first-track-icon.png" />
     <EmbeddedResource Include="Resources\Images\high.png" />
+    <EmbeddedResource Include="Resources\Images\last-track-icon.png" />
+    <EmbeddedResource Include="Resources\Images\pause-icon.png" />
     <EmbeddedResource Include="Resources\Images\pause.png" />
+    <EmbeddedResource Include="Resources\Images\play-icon.png" />
     <EmbeddedResource Include="Resources\Images\play.png" />
+    <EmbeddedResource Include="Resources\Images\replay-icon.png" />
+    <EmbeddedResource Include="Resources\Images\shuffle-icon.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -11,8 +11,8 @@ namespace XamarinFormsDemo.ViewModels
         public AudioViewModel() {
             var localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             string iconDirectory = Path.Combine(localAppData, "icons");
-            playIcon = Path.Combine(iconDirectory, "play.png");
-            pauseIcon = Path.Combine(iconDirectory, "pause.png");
+            playIcon = Path.Combine(iconDirectory, "play-icon.png");
+            pauseIcon = Path.Combine(iconDirectory, "pause-icon.png");
             songArt = Path.Combine(iconDirectory, "high.png");
         }
 

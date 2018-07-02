@@ -18,9 +18,8 @@ namespace XamarinFormsDemo
             string iconDirectory = Path.Combine(localAppData, "icons");
 		    Directory.CreateDirectory(iconDirectory);
 
-
-		    CopyResourceToFile("XamarinFormsDemo.Resources.Images.play.png", Path.Combine(iconDirectory, "play.png"));
-		    CopyResourceToFile("XamarinFormsDemo.Resources.Images.pause.png", Path.Combine(iconDirectory, "pause.png"));
+		    CopyResourceToFile("XamarinFormsDemo.Resources.Images.play-icon.png", Path.Combine(iconDirectory, "play-icon.png"));
+		    CopyResourceToFile("XamarinFormsDemo.Resources.Images.pause-icon.png", Path.Combine(iconDirectory, "pause-icon.png"));
 		    CopyResourceToFile("XamarinFormsDemo.Resources.Images.high.png", Path.Combine(iconDirectory, "high.png"));
 		    
             MainPage = new MainPage();
